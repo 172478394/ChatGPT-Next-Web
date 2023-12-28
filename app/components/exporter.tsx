@@ -539,6 +539,7 @@ export function ImagePreviewer(props: {
 
           <div>
             <div className={styles["main-title"]}>ChatKore Next Web</div>
+
             <div className={styles["sub-title"]}>
               github.com/172478394/ChatGPT-Next-Web
             </div>

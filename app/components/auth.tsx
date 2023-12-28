@@ -15,7 +15,7 @@ export function AuthPage() {
   const navigate = useNavigate();
   const access = useAccessStore();
 
-  const loginInfo = {
+  let loginInfo = {
     password: "",
     username: "",
   };
@@ -47,9 +47,9 @@ export function AuthPage() {
       .then(function (data) {
         if (data.code === 0) {
           showToast("登录成功！");
-          // localStorage.setItem("SECRET_TOKEN", data.data);
-          // localStorage.setItem("SECRET_TOKEN", data.data.token);
-          access.updateToken(data.data.token);
+          access.update((info) => {
+            info.openaiApiKey = data.data.token
+          });
           return navigate(Path.Home);
         } else {
           showToast(data.message);
@@ -58,7 +58,11 @@ export function AuthPage() {
       .catch(function (err) {
         showToast("登录失败，请重试！");
         console.log(err);
-      });
+      })
+      loginInfo = {
+        password: "",
+        username: "",
+      };
   };
 
   const goRegister = () => {

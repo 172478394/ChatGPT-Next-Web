@@ -11,8 +11,10 @@ export const RUNTIME_CONFIG_DOM = "danger-runtime-config";
 
 export const DEFAULT_CORS_HOST = "https://chatgpt2.nextweb.fun";
 export const DEFAULT_API_HOST = "https://www.chatkore.com/api/";
+
 export const OPENAI_BASE_URL = "https://api.openai.com";
 export const GEMINI_BASE_URL = "https://generativelanguage.googleapis.com/";
+
 
 export enum Path {
   Home = "/",
