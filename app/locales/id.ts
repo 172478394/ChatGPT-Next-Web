@@ -5,11 +5,7 @@ const id: PartialLocaleType = {
   WIP: "Coming Soon...",
   Error: {
     Unauthorized:
-<<<<<<< HEAD
       "Akses tidak diizinkan. Silakan [otorisasi](/newchat/#/auth) dengan memasukkan kode akses.",
-=======
-      "Akses tidak diizinkan, silakan masukkan kode akses atau masukkan kunci API OpenAI Anda. di halaman [autentikasi](/#/auth) atau di halaman [Pengaturan](/#/settings).",
->>>>>>> upstream/main
   },
   Auth: {
     Title: "Diperlukan Kode Akses",
