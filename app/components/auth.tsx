@@ -13,12 +13,23 @@ import { showToast } from "./ui-lib";
 
 export function AuthPage() {
   const navigate = useNavigate();
-  const access = useAccessStore();
+  const accessStore = useAccessStore();
 
+<<<<<<< HEAD
   const loginInfo = {
     password: "",
     username: "",
   };
+=======
+  const goHome = () => navigate(Path.Home);
+  const goChat = () => navigate(Path.Chat);
+  const resetAccessCode = () => {
+    accessStore.update((access) => {
+      access.openaiApiKey = "";
+      access.accessCode = "";
+    });
+  }; // Reset access code to empty string
+>>>>>>> upstream/main
 
   const usernameUpdate = (e: string) => {
     loginInfo.username = e;
@@ -95,16 +106,67 @@ export function AuthPage() {
       <input
         className={styles["auth-input"]}
         type="password"
+<<<<<<< HEAD
         placeholder="请输入密码"
         // value={access.accessCode}
         onChange={(e) => {
           passwoardUpdate(e.currentTarget.value);
+=======
+        placeholder={Locale.Auth.Input}
+        value={accessStore.accessCode}
+        onChange={(e) => {
+          accessStore.update(
+            (access) => (access.accessCode = e.currentTarget.value),
+          );
+>>>>>>> upstream/main
         }}
       />
+      {!accessStore.hideUserApiKey ? (
+        <>
+          <div className={styles["auth-tips"]}>{Locale.Auth.SubTips}</div>
+          <input
+            className={styles["auth-input"]}
+            type="password"
+            placeholder={Locale.Settings.Access.OpenAI.ApiKey.Placeholder}
+            value={accessStore.openaiApiKey}
+            onChange={(e) => {
+              accessStore.update(
+                (access) => (access.openaiApiKey = e.currentTarget.value),
+              );
+            }}
+          />
+          <input
+            className={styles["auth-input"]}
+            type="password"
+            placeholder={Locale.Settings.Access.Google.ApiKey.Placeholder}
+            value={accessStore.googleApiKey}
+            onChange={(e) => {
+              accessStore.update(
+                (access) => (access.googleApiKey = e.currentTarget.value),
+              );
+            }}
+          />
+        </>
+      ) : null}
 
       <div className={styles["auth-actions"]}>
+<<<<<<< HEAD
         <IconButton text="登 录" type="primary" onClick={goHome} />
         <IconButton text="无账号去注册" onClick={goRegister} />
+=======
+        <IconButton
+          text={Locale.Auth.Confirm}
+          type="primary"
+          onClick={goChat}
+        />
+        <IconButton
+          text={Locale.Auth.Later}
+          onClick={() => {
+            resetAccessCode();
+            goHome();
+          }}
+        />
+>>>>>>> upstream/main
       </div>
     </div>
   );
